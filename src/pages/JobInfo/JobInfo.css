@@ -1,0 +1,94 @@
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+.mainInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.leftHeader > h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+.leftHeader > h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+}
+.rightHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  justify-content: flex-end;
+}
+.rightHeader > span {
+  margin: 0 0 0 3px;
+}
+.rightHeader > a {
+  display: flex;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 50%;
+}
+.left > p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-url > p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.right > p {
+  margin: 0;
+}
+#jobDescription {
+  white-space: pre-line;
+}
+/* .app-url{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.app-url > p{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.app-url > a {
+    display: block;
+    align-items: center;
+} */
