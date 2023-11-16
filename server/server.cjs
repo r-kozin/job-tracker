@@ -173,5 +173,5 @@ app.put("/reorder/:id", async (req, res) => {
 );
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Job Tracker listening at http://localhost:${port}`);
 });
