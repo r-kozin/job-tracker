@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
   res.send("Please use /jobs or /jobs/:status or /job/:id");
 });
 
-app.post("/new", async (req, res) => {
+app.post("/new", async (req, res) => { //Add new job to database
   try {
     const newJob = await pool.query(
       "INSERT INTO jobs (companyname, jobtitle, description, location, salarymin, salarymax, ats, appurl, appstatus, dateapplied, datecreated) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(),$10) RETURNING *",
@@ -36,7 +36,7 @@ app.post("/new", async (req, res) => {
   }
 });
 
-app.put("/edit/:id", async (req, res) => {
+app.put("/edit/:id", async (req, res) => { //Edit job in database by id
   try {
     const updatedJob = await pool.query(
       "UPDATE jobs SET companyname = $1, jobtitle = $2, description = $3, location = $4, salarymin = $5, salarymax = $6, ats = $7, appurl = $8, appstatus = $9, dateapplied = $10, datecreated = $11 WHERE id = $12 RETURNING *",
@@ -63,7 +63,7 @@ app.put("/edit/:id", async (req, res) => {
   }
 });
 
-app.put("/move/:id", async (req, res) => {
+app.put("/move/:id", async (req, res) => { //Move job to different column in database
   try {
     console.log(req.body)
     const movedJob = await pool.query(
@@ -78,7 +78,7 @@ app.put("/move/:id", async (req, res) => {
   }
 });
 
-app.delete("/delete/:id", async (req, res) => {
+app.delete("/delete/:id", async (req, res) => { //Delete job from database by id
   try {
     const deletedJob = await pool.query(
       "DELETE FROM jobs WHERE id = $1 RETURNING *",
@@ -93,7 +93,7 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.get("/jobs", async (req, res) => {
+app.get("/jobs", async (req, res) => { //Get all jobs from database
   try {
     const allJobs = await pool.query("SELECT * FROM jobs");
     res.json(allJobs.rows);
@@ -117,7 +117,7 @@ app.get("/jobs/:status", async (req, res) => {
   }
 });
 
-app.get("/job/:id", async (req, res) => {
+app.get("/job/:id", async (req, res) => { //Get job from database by id
   try {
     const job = await pool.query("SELECT * FROM jobs WHERE id = $1", [
       req.params.id,
@@ -132,7 +132,7 @@ app.get("/job/:id", async (req, res) => {
   }
 });
 
-app.put("/reject/:id", async (req, res) => {
+app.put("/reject/:id", async (req, res) => { //Reject job in database by id
   try {
     const rejectedJob = await pool.query(
       "UPDATE jobs SET appstatus = $1 WHERE id = $2 RETURNING *",
@@ -146,7 +146,7 @@ app.put("/reject/:id", async (req, res) => {
   }
 });
 
-app.get("/columns", async (req, res) => {
+app.get("/columns", async (req, res) => { //Get all columns from database
   try {
     const columns = await pool.query("SELECT * FROM column_list");
     res.json(columns.rows);
@@ -156,7 +156,7 @@ app.get("/columns", async (req, res) => {
 }
 );
 
-app.put("/reorder/:id", async (req, res) => {
+app.put("/reorder/:id", async (req, res) => { //Reorder jobs in column in database by id
   try {
     const reorderedJob = await pool.query(
       "UPDATE column_list SET jobIds = $1 WHERE id = $2 RETURNING *",

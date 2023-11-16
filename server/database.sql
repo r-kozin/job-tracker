@@ -1,3 +1,5 @@
+-- This file includes the SQL commands to create the database and tables
+
 CREATE DATABASE jobtracker;
 
 CREATE TABLE jobs(
