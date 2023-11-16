@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("script.js loaded");
 
-  // popup.js
-
   // Function to update the UI based on the received information
   function updatePopupUI(message) {
     console.log("Received message:", message);
@@ -10,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("companyName").style.display = "none";
       document.getElementById("jobTitle").style.display = "none";
     }
-    // Replace this with your logic to update the UI
+    // Update the popup with the received information
     document.getElementById("companyName").innerText = message.companyName;
     document.getElementById("jobTitle").innerText = message.jobTitle;
-    // Update other UI elements as needed
+
   }
 
   chrome.runtime.sendMessage({ action: "getLatestInfo" }, function (response) {

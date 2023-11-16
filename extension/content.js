@@ -30,7 +30,7 @@ let appUrl = "error";
 let appStatus = "Added";
 
 // Listen for messages from the popup
-chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) { //TODO: Refactor this to be more efficient/easier to understand
   if (msg.action === "addJobButtonClicked") {
     //if the add job button is clicked
     // Function to extract data from the page
