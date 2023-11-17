@@ -214,16 +214,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) { //TO
           }
         }
       }
-      let description = document.getElementById("job-details").innerText; //TODO: See if I can fix formatting a bit so it doesnt have SOO much blank space
-      //   console.log(description);
-      //   console.log(salary);
-      //   console.log(salaryMin);
-      //   console.log(salaryMax);
-      //   console.log(datePosted); // TODO: CHECK IF InnerText includes Reposted, otherwise this works
-      //   console.log(location);
-      //   console.log(companyName);
-      //   console.log(appUrl);
-      //   console.log(document.querySelector('[class$="_job-title"').innerText);
+      let description = document.getElementById("job-details").innerText;
       let jobTitle = document.querySelector('[class$="_job-title"').innerText;
 
       const jobInfo = {
@@ -252,9 +243,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) { //TO
   }
 });
 
-// Assume you have a function to update the popup UI
 function getPageInfo() {
-  // Your logic to extract information from the page
+  // extract information from the page
   let companyName = document
     .querySelector('[class$="_primary-description"')
     .innerText.split(" · ")[0];
@@ -263,7 +253,6 @@ function getPageInfo() {
   const pageInfo = {
     companyName: companyName,
     jobTitle: jobTitle,
-    // Add more properties as needed
   };
 
   console.log("Updating popup UI with data:", pageInfo);
@@ -275,7 +264,7 @@ function getPageInfo() {
   );
 }
 
-// Add a listener for messages from the background script
+// Listen for messages from the background script
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.action === "extractPageInfo") {
     // Call the function to extract page information
