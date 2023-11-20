@@ -30,8 +30,13 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       console.log(data);
       if (data.status === 200) {
         sendResponse({
-          action: "backgroundToContent",
-          data: "Job added to database! ",
+          action: "jobAdded",
+          data: "Job added to database!",
+        });
+        chrome.runtime.sendMessage({ action: "updateJobAdded" }, function (response) {
+          if (response.success) {
+            console.log("updated UI with new job added");
+          }
         });
       }
     });

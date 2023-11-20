@@ -1,30 +1,6 @@
 // content.js
 console.log("Content script loaded.");
 
-setTimeout(function () {
-  if (
-    document
-      .querySelector('[class$="_primary-description"')
-      .innerText.split(" · ")[1]
-      .includes("Area")
-  ) {
-    console.log(
-      document
-        .querySelector('[class$="_primary-description"')
-        .innerText.split(" · ")[1]
-        .split("Area")[0]
-        .trim()
-    );
-    console.log(
-      document
-        .querySelector('[class$="_primary-description"')
-        .innerText.split(" · ")[1]
-        .split("Area")[1]
-        .trim()
-    );
-  }
-}, 3000);
-
 //declare variables
 let appUrl = "error";
 let appStatus = "Added";
